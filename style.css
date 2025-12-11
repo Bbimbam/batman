@@ -1,0 +1,1650 @@
+/* ========== БАЗОВЫЕ НАСТРОЙКИ ДЛЯ МОБИЛЬНЫХ ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Rajdhani', sans-serif;
+    color: #ffffff;
+    line-height: 1.6;
+    min-height: 100vh;
+    position: relative;
+    background-color: #000000;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+}
+
+/* Улучшенные стили для касаний */
+button, 
+a, 
+input, 
+textarea {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
+    touch-action: manipulation;
+}
+
+/* ========== ФОН И ОСНОВНЫЕ ЭЛЕМЕНТЫ ========== */
+/* Фоновое изображение Бэтмена */
+.batman-bg-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.15;
+    background-image: url('https://i.pinimg.com/736x/3t/6u/hF30E.jpg');
+    background-size: 70% auto;
+    background-position: center 65%;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    filter: brightness(0.5) contrast(1.2) grayscale(100%);
+    pointer-events: none;
+    mix-blend-mode: soft-light;
+}
+
+@media (max-width: 768px) {
+    .batman-bg-overlay {
+        background-size: 90% auto;
+        opacity: 0.1;
+    }
+}
+
+@media (max-width: 480px) {
+    .batman-bg-overlay {
+        background-size: 120% auto;
+    }
+}
+
+/* Затемнение для фона */
+.bg-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: -1;
+}
+
+/* ========== НАВИГАЦИЯ ========== */
+.wiki-nav {
+    background: rgba(10, 10, 10, 0.95);
+    border-bottom: 1px solid #333333;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    opacity: 0.9;
+    transition: opacity 0.5s ease;
+    -webkit-font-smoothing: antialiased;
+}
+
+.wiki-nav:hover {
+    opacity: 1;
+    background: rgba(10, 10, 10, 0.98);
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.nav-logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #8b0000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: 0.5px;
+}
+
+.nav-logo i {
+    color: #8b0000;
+    font-size: 2rem;
+    text-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
+}
+
+.nav-search {
+    display: flex;
+    flex-grow: 0.4;
+}
+
+.nav-search input {
+    flex-grow: 1;
+    padding: 12px 20px;
+    background: rgba(20, 20, 20, 0.9);
+    border: 1px solid #333333;
+    color: #ffffff;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1rem;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    opacity: 0.8;
+    transition: all 0.3s;
+    -webkit-font-smoothing: antialiased;
+}
+
+.nav-search input:hover,
+.nav-search input:focus {
+    opacity: 1;
+    background: rgba(30, 30, 30, 0.95);
+    outline: none;
+}
+
+.nav-search button {
+    background: rgba(30, 30, 30, 0.9);
+    border: 1px solid #333333;
+    border-left: none;
+    color: #ffffff;
+    padding: 0 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+    opacity: 0.8;
+    -webkit-font-smoothing: antialiased;
+}
+
+.nav-search button:hover {
+    background: rgba(40, 40, 40, 0.95);
+    opacity: 1;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-menu a {
+    color: #cccccc;
+    text-decoration: none;
+    font-family: 'Electrolize', sans-serif;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+    opacity: 0.8;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 500;
+}
+
+.nav-menu a:hover {
+    color: #ffffff;
+    opacity: 1;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+/* ========== МОБИЛЬНАЯ НАВИГАЦИЯ ========== */
+.mobile-menu-btn {
+    display: none;
+}
+
+.mobile-search-btn {
+    display: none;
+}
+
+.mobile-search-container {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-btn,
+    .mobile-search-btn {
+        display: block;
+        background: none;
+        border: none;
+        color: #ffffff;
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 10px;
+        z-index: 1001;
+    }
+    
+    .mobile-menu-btn i {
+        color: #8b0000;
+    }
+    
+    .nav-search {
+        display: none;
+    }
+    
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(10, 10, 10, 0.98);
+        flex-direction: column;
+        padding: 15px 0;
+        border-top: 1px solid #333;
+        z-index: 1000;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+    
+    .nav-menu.active {
+        display: flex;
+    }
+    
+    .nav-menu a {
+        padding: 15px 20px;
+        border-bottom: 1px solid #333;
+        width: 100%;
+        justify-content: flex-start;
+        font-size: 1.1rem;
+    }
+    
+    .nav-menu a:last-child {
+        border-bottom: none;
+    }
+    
+    .mobile-search-container {
+        display: none;
+        padding: 15px 20px;
+        background: rgba(10, 10, 10, 0.95);
+        border-bottom: 1px solid #333;
+    }
+    
+    .mobile-search-container.active {
+        display: block;
+    }
+    
+    .mobile-search-container input {
+        width: 100%;
+        padding: 12px 15px;
+        background: rgba(20, 20, 20, 0.9);
+        border: 1px solid #333;
+        color: #fff;
+        font-family: 'Share Tech Mono', monospace;
+        font-size: 16px;
+    }
+    
+    /* Адаптивный логотип */
+    .nav-logo {
+        font-size: 1.4rem;
+        flex: 1;
+        justify-content: center;
+    }
+    
+    .nav-logo i {
+        font-size: 1.6rem;
+    }
+    
+    .nav-container {
+        padding: 0 15px;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-logo {
+        font-size: 1.2rem;
+    }
+    
+    .nav-logo i {
+        font-size: 1.4rem;
+    }
+    
+    .mobile-menu-btn,
+    .mobile-search-btn {
+        font-size: 1.3rem;
+        padding: 8px;
+    }
+}
+
+/* ========== ОСНОВНОЙ КОНТЕЙНЕР ========== */
+.wiki-container {
+    max-width: 1400px;
+    margin: 30px auto;
+    padding: 0 20px;
+    display: flex;
+    gap: 30px;
+    position: relative;
+    z-index: 10;
+}
+
+@media (max-width: 1200px) {
+    .wiki-container {
+        gap: 20px;
+    }
+}
+
+/* ========== БОКОВАЯ ПАНЕЛЬ ========== */
+.wiki-sidebar {
+    width: 280px;
+    flex-shrink: 0;
+    opacity: 0.9;
+    transition: opacity 0.5s ease;
+}
+
+.wiki-sidebar:hover {
+    opacity: 1;
+}
+
+@media (max-width: 992px) {
+    .wiki-sidebar {
+        width: 240px;
+    }
+}
+
+@media (max-width: 768px) {
+    .wiki-sidebar {
+        display: none;
+        width: 100%;
+        order: 2;
+        margin-top: 20px;
+    }
+    
+    .wiki-sidebar.active {
+        display: block;
+    }
+}
+
+.sidebar-section {
+    background: rgba(20, 20, 20, 0.85);
+    border: 1px solid #333333;
+    margin-bottom: 20px;
+    border-radius: 2px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    -webkit-font-smoothing: antialiased;
+}
+
+.sidebar-section h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9rem;
+    color: #ffffff;
+    padding: 15px;
+    background: rgba(30, 30, 30, 0.9);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 600;
+}
+
+.sidebar-menu {
+    list-style: none;
+}
+
+.sidebar-menu li {
+    border-bottom: 1px solid #333333;
+}
+
+.sidebar-menu li:last-child {
+    border-bottom: none;
+}
+
+.sidebar-menu li.active {
+    background: rgba(30, 30, 30, 0.6);
+}
+
+.sidebar-menu a {
+    color: #cccccc;
+    text-decoration: none;
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s;
+    font-size: 0.95rem;
+    opacity: 0.9;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 400;
+}
+
+.sidebar-menu a:hover {
+    background: rgba(40, 40, 40, 0.7);
+    color: #ffffff;
+    opacity: 1;
+    font-weight: 500;
+}
+
+.sidebar-menu .active a {
+    color: #ffffff;
+    background: rgba(40, 40, 40, 0.9);
+    opacity: 1;
+    font-weight: 500;
+}
+
+/* ========== ОСНОВНОЙ КОНТЕНТ ========== */
+.wiki-content {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+@media (max-width: 768px) {
+    .wiki-container {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .wiki-content {
+        width: 100%;
+    }
+}
+
+/* ========== ЗАГОЛОВОК СТРАНИЦЫ ========== */
+.content-header {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #333333;
+    padding-bottom: 20px;
+}
+
+.page-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #ffffff;
+    text-align: center;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    margin-bottom: 10px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+@media (max-width: 992px) {
+    .page-title {
+        font-size: 2.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 2.2rem;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-title {
+        font-size: 1.8rem;
+        line-height: 1.3;
+    }
+}
+
+.title-icon {
+    color: #666666;
+    margin: 0 15px;
+}
+
+@media (max-width: 768px) {
+    .title-icon {
+        margin: 0 10px;
+        font-size: 0.8em;
+    }
+}
+
+.page-subtitle {
+    text-align: center;
+    color: #cccccc;
+    font-size: 1.1rem;
+    font-family: 'Electrolize', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+    .page-subtitle {
+        font-size: 1rem;
+        line-height: 1.4;
+        padding: 0 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-subtitle {
+        font-size: 0.9rem;
+    }
+}
+
+.status-active {
+    color: #ffffff;
+    font-weight: 600;
+    font-family: 'Share Tech Mono', monospace;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+/* ========== СЕКЦИИ СТАТЬИ ========== */
+.wiki-article {
+    background: transparent;
+    padding: 0;
+}
+
+.article-section {
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #333333;
+    -webkit-font-smoothing: antialiased;
+}
+
+.article-section:last-child {
+    border-bottom: none;
+}
+
+.section-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8rem;
+    color: #ffffff;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    opacity: 0.95;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 1.5rem;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 1.3rem;
+    }
+}
+
+.section-number {
+    font-family: 'Share Tech Mono', monospace;
+    color: #666666;
+    font-size: 1.2rem;
+    background: rgba(30, 30, 30, 0.9);
+    padding: 5px 12px;
+    border-radius: 2px;
+    font-weight: 600;
+    -webkit-font-smoothing: antialiased;
+}
+
+@media (max-width: 480px) {
+    .section-number {
+        font-size: 1rem;
+        padding: 4px 10px;
+    }
+}
+
+.section-header {
+    margin-bottom: 25px;
+}
+
+.section-header h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    text-align: center;
+    opacity: 0.95;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 800;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+    .section-header h3 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-header h3 {
+        font-size: 1.6rem;
+        letter-spacing: 1px;
+    }
+}
+
+.section-meta {
+    display: flex;
+    gap: 20px;
+    color: #666666;
+    font-size: 0.9rem;
+    font-family: 'Share Tech Mono', monospace;
+    justify-content: center;
+    opacity: 0.9;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .section-meta {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+}
+
+/* ========== ТЁМНЫЕ СЕКЦИИ ========== */
+.dark-section {
+    opacity: 0.15;
+    transition: all 0.5s ease;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    border-radius: 4px;
+    padding: 20px;
+    margin: 10px 0;
+}
+
+@media (max-width: 768px) {
+    .dark-section {
+        padding: 15px;
+        margin: 5px 0;
+    }
+}
+
+.dark-section:hover {
+    opacity: 0.95;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Тёмный текст */
+.dark-section .article-text.dark-text {
+    color: #222222 !important;
+    transition: all 0.5s ease;
+}
+
+.dark-section .article-text.dark-text p {
+    color: #222222 !important;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.1);
+    opacity: 0.95 !important;
+    transition: all 0.3s ease;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 400;
+}
+
+.dark-section:hover .article-text.dark-text p {
+    color: #ffffff !important;
+    opacity: 1 !important;
+    text-shadow: 0 1px 5px rgba(255, 255, 255, 0.3);
+    font-weight: 500;
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Улучшенные цитаты при наведении */
+.dark-section .quote-box.dark-text {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-left-color: #666666 !important;
+    transition: all 0.5s ease;
+}
+
+.dark-section:hover .quote-box.dark-text {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-left-color: #ffffff !important;
+}
+
+/* ========== ТАБЛИЦА ========== */
+.data-table {
+    overflow-x: auto;
+    margin: 30px 0;
+    opacity: 0.95;
+    transition: opacity 0.5s;
+    -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling: touch;
+}
+
+.data-table:hover {
+    opacity: 1;
+}
+
+.data-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(20, 20, 20, 0.85);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    min-width: 600px;
+}
+
+@media (max-width: 768px) {
+    .data-table {
+        margin: 20px 0;
+    }
+    
+    .data-table table {
+        min-width: 500px;
+    }
+}
+
+.data-table th {
+    background: rgba(30, 30, 30, 0.9);
+    color: #ffffff;
+    padding: 15px;
+    text-align: left;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9rem;
+    border-bottom: 2px solid #666666;
+    white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 600;
+}
+
+.data-table th i {
+    margin-right: 8px;
+}
+
+@media (max-width: 768px) {
+    .data-table th,
+    .data-table td {
+        padding: 12px 10px;
+        font-size: 0.85rem;
+    }
+}
+
+.data-table td {
+    padding: 15px;
+    border-bottom: 1px solid #666666;
+    color: #cccccc;
+    font-size: 0.95rem;
+    opacity: 0.95;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 400;
+}
+
+.data-table tr:hover {
+    background: rgba(40, 40, 40, 0.7);
+}
+
+.data-table tr:hover td {
+    opacity: 1;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+/* ========== СТАТУС ПАНЕЛЬ ========== */
+.status-panel {
+    background: rgba(20, 20, 20, 0.85);
+    border: 1px solid #666666;
+    padding: 25px;
+    margin-top: 30px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    -webkit-font-smoothing: antialiased;
+}
+
+@media (max-width: 768px) {
+    .status-panel {
+        padding: 20px;
+        margin-top: 20px;
+    }
+}
+
+.status-panel h4 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    opacity: 0.95;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 700;
+}
+
+@media (max-width: 480px) {
+    .status-panel h4 {
+        font-size: 1.1rem;
+    }
+}
+
+.threat-level {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    opacity: 0.95;
+    transition: opacity 0.3s;
+    -webkit-font-smoothing: antialiased;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    .threat-level {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .threat-level {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+}
+
+.threat-label {
+    font-family: 'Share Tech Mono', monospace;
+    color: #ffffff;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    font-weight: 600;
+    -webkit-font-smoothing: antialiased;
+}
+
+@media (max-width: 480px) {
+    .threat-label {
+        text-align: center;
+    }
+}
+
+.threat-meter {
+    flex-grow: 1;
+    height: 12px;
+    background: #222222;
+    border-radius: 6px;
+    overflow: hidden;
+    min-width: 100px;
+}
+
+@media (max-width: 480px) {
+    .threat-meter {
+        width: 100%;
+    }
+}
+
+.meter-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #333333, #666666);
+    border-radius: 6px;
+    position: relative;
+}
+
+.threat-value {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    color: #ffffff;
+    font-weight: 700;
+    min-width: 50px;
+    text-align: right;
+    -webkit-font-smoothing: antialiased;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 480px) {
+    .threat-value {
+        text-align: center;
+        width: 100%;
+    }
+}
+
+/* ========== ГЕНЕРАТОР ========== */
+.generator-section {
+    background: rgba(20, 20, 20, 0.85);
+    border: 1px solid #666666;
+    padding: 25px;
+    margin: 30px 0;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    -webkit-font-smoothing: antialiased;
+}
+
+@media (max-width: 768px) {
+    .generator-section {
+        padding: 20px;
+        margin: 20px 0;
+    }
+}
+
+.generate-btn {
+    background: rgba(30, 30, 30, 0.9);
+    color: #ffffff;
+    border: 1px solid #666666;
+    padding: 12px 24px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 15px 0;
+    transition: all 0.3s;
+    opacity: 0.9;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 600;
+    min-height: 44px;
+    min-width: 44px;
+}
+
+@media (max-width: 480px) {
+    .generate-btn {
+        padding: 15px 20px;
+        font-size: 1.1rem;
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+.generate-btn:hover {
+    background: rgba(40, 40, 40, 0.95);
+    border-color: #ffffff;
+    transform: translateY(-2px);
+    opacity: 1;
+    font-weight: 700;
+}
+
+.generated-content {
+    margin-top: 20px;
+    border-top: 1px solid #666666;
+    padding-top: 20px;
+}
+
+.generated-case {
+    background: rgba(30, 30, 30, 0.9);
+    border: 1px solid #666666;
+    padding: 15px;
+    margin: 10px 0;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.9rem;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    opacity: 0.95;
+    transition: opacity 0.3s;
+    -webkit-font-smoothing: antialiased;
+}
+
+.generated-case:hover {
+    opacity: 1;
+}
+
+/* ========== КАТЕГОРИИ ========== */
+.article-footer {
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid #666666;
+    -webkit-font-smoothing: antialiased;
+}
+
+@media (max-width: 768px) {
+    .article-footer {
+        margin-top: 30px;
+        padding-top: 15px;
+    }
+}
+
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.95;
+    transition: opacity 0.3s;
+}
+
+.categories:hover {
+    opacity: 1;
+}
+
+.category-label {
+    color: #666666;
+    font-size: 0.9rem;
+    font-family: 'Orbitron', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    -webkit-font-smoothing: antialiased;
+}
+
+.category-tag {
+    background: rgba(30, 30, 30, 0.9);
+    color: #cccccc;
+    padding: 5px 12px;
+    border-radius: 2px;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: all 0.3s;
+    border: 1px solid #666666;
+    opacity: 0.9;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 500;
+    min-height: 32px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.category-tag:hover {
+    background: rgba(40, 40, 40, 0.95);
+    color: #ffffff;
+    border-color: #ffffff;
+    opacity: 1;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .categories {
+        gap: 8px;
+    }
+    
+    .category-tag {
+        padding: 4px 10px;
+        font-size: 0.8rem;
+    }
+}
+
+/* ========== ФУТЕР САЙТА ========== */
+.wiki-footer {
+    background: rgba(5, 5, 5, 0.95);
+    border-top: 2px solid #666666;
+    margin-top: 50px;
+    padding-top: 40px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    -webkit-font-smoothing: antialiased;
+}
+
+@media (max-width: 768px) {
+    .wiki-footer {
+        margin-top: 30px;
+        padding-top: 30px;
+    }
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    margin-bottom: 30px;
+}
+
+@media (max-width: 992px) {
+    .footer-container {
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+    
+    .footer-section {
+        flex: 1 1 calc(50% - 30px);
+        min-width: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 25px;
+    }
+    
+    .footer-section {
+        width: 100%;
+    }
+}
+
+.footer-section {
+    flex: 1;
+    padding: 0 20px;
+    opacity: 0.95;
+    transition: opacity 0.3s;
+}
+
+.footer-section:hover {
+    opacity: 1;
+}
+
+.footer-section h4 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    color: #ffffff;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    .footer-section h4 {
+        font-size: 1rem;
+    }
+}
+
+.footer-section p {
+    color: #999999;
+    margin-bottom: 10px;
+    line-height: 1.5;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 400;
+}
+
+.footer-note {
+    font-family: 'Share Tech Mono', monospace;
+    color: #666666;
+    font-size: 0.9rem;
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
+}
+
+.footer-section a {
+    display: block;
+    color: #cccccc;
+    text-decoration: none;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+    text-align: center;
+    opacity: 0.9;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 500;
+    padding: 5px 0;
+    min-height: 30px;
+}
+
+.footer-section a:hover {
+    color: #ffffff;
+    opacity: 1;
+    font-weight: 600;
+}
+
+.system-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    justify-content: center;
+    opacity: 0.95;
+    -webkit-font-smoothing: antialiased;
+}
+
+.system-status:hover {
+    opacity: 1;
+}
+
+.status-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.status-indicator.active {
+    background: #ffffff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.update-time {
+    color: #666666;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.9rem;
+    text-align: center;
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
+}
+
+#current-time {
+    color: #ffffff;
+    font-weight: 600;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+}
+
+.footer-bottom {
+    background: rgba(0, 0, 0, 0.95);
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid #222222;
+    opacity: 0.95;
+    transition: opacity 0.3s;
+    -webkit-font-smoothing: antialiased;
+}
+
+@media (max-width: 768px) {
+    .footer-bottom {
+        padding: 15px 10px;
+    }
+}
+
+.footer-bottom:hover {
+    opacity: 1;
+}
+
+.footer-bottom p {
+    color: #666666;
+    font-size: 0.9rem;
+    font-family: 'Share Tech Mono', monospace;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .footer-bottom p {
+        font-size: 0.8rem;
+        line-height: 1.4;
+    }
+}
+
+/* ========== ЦЕНТРИРОВАНИЕ ТЕКСТА ========== */
+.centered-text {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    -webkit-font-smoothing: antialiased;
+}
+
+@media (max-width: 768px) {
+    .centered-text {
+        margin-bottom: 15px;
+        font-size: 1rem;
+    }
+}
+
+/* ========== ДОЖДЬ ========== */
+#rain-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+/* Капли дождя */
+.raindrop {
+    position: absolute;
+    width: 2px;
+    height: 20px;
+    background: linear-gradient(to bottom, transparent 0%, rgba(255, 255, 255, 0.3) 70%, rgba(255, 255, 255, 0.6) 100%);
+    animation: fall linear infinite;
+    border-radius: 0 0 2px 2px;
+}
+
+/* Волны от капель */
+.ripple {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    animation: ripple 0.6s ease-out;
+}
+
+/* Анимация падения */
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+    }
+}
+
+/* Анимация волн */
+@keyframes ripple {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(10);
+        opacity: 0;
+    }
+}
+
+/* ========== АКТИВНЫЕ СТАТЬИ И ИЗМЕНЕНИЯ ========== */
+.active-articles {
+    padding: 15px;
+}
+
+@media (max-width: 768px) {
+    .active-articles {
+        padding: 12px;
+    }
+}
+
+.article-link {
+    display: block;
+    color: #cccccc;
+    text-decoration: none;
+    padding: 10px 0;
+    border-bottom: 1px solid #333333;
+    transition: all 0.3s;
+    opacity: 0.9;
+    -webkit-font-smoothing: antialiased;
+    min-height: 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.article-link:hover {
+    color: #ffffff;
+    opacity: 1;
+    font-weight: 500;
+}
+
+.article-link:last-child {
+    border-bottom: none;
+}
+
+.article-title {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 3px;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+    .article-title {
+        font-size: 0.9rem;
+    }
+}
+
+.article-meta {
+    font-size: 0.8rem;
+    color: #666666;
+    font-family: 'Share Tech Mono', monospace;
+    -webkit-font-smoothing: antialiased;
+}
+
+.recent-changes {
+    padding: 15px;
+}
+
+@media (max-width: 768px) {
+    .recent-changes {
+        padding: 12px;
+    }
+}
+
+.change-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #333333;
+    opacity: 0.9;
+    transition: opacity 0.3s;
+    -webkit-font-smoothing: antialiased;
+}
+
+.change-item:hover {
+    opacity: 1;
+}
+
+.change-item:last-child {
+    border-bottom: none;
+}
+
+.change-time {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.8rem;
+    color: #666666;
+    -webkit-font-smoothing: antialiased;
+}
+
+.change-desc {
+    font-size: 0.85rem;
+    color: #cccccc;
+    text-align: right;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 400;
+}
+
+/* ========== ОБЫЧНЫЙ ТЕКСТ СТАТЬИ ========== */
+.article-text {
+    color: #ffffff;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+}
+
+@media (max-width: 768px) {
+    .article-text {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+}
+
+.article-text p {
+    margin-bottom: 20px;
+    opacity: 0.95;
+    transition: opacity 0.3s;
+    font-weight: 400;
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+
+@media (max-width: 768px) {
+    .article-text p {
+        margin-bottom: 15px;
+    }
+}
+
+.article-text p:hover {
+    opacity: 1;
+}
+
+/* ========== ОБЩИЕ СТИЛИ ДЛЯ АДАПТИВНОСТИ ========== */
+@media (max-width: 768px) {
+    /* Уменьшаем отступы и шрифты */
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.3rem; }
+    h4 { font-size: 1.1rem; }
+    
+    /* Улучшаем скролл на мобильных */
+    .data-table {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Убираем фиксированные фоны для производительности */
+    .gothic-bg {
+        background-attachment: scroll;
+    }
+    
+    /* Улучшаем кнопки для касаний */
+    button, 
+    .category-tag,
+    .article-link,
+    .nav-menu a {
+        min-height: 44px;
+        min-width: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Ещё больше уменьшаем для маленьких экранов */
+    h1 { font-size: 1.6rem; }
+    h2 { font-size: 1.3rem; }
+    h3 { font-size: 1.1rem; }
+    
+    /* Убираем ненужные анимации для производительности */
+    .dark-section:hover {
+        transform: none;
+    }
+    
+    /* Делаем элементы шире для удобного касания */
+    .generate-btn,
+    .filter-btn,
+    .category-tag {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* ========== ИСПРАВЛЕНИЕ ПРОБЛЕМ С КАСАНИЕМ ========== */
+@media (hover: none) and (pointer: coarse) {
+    /* Отключаем ховер-эффекты на устройствах с касанием */
+    .dark-section:hover {
+        opacity: 0.15;
+        transform: none;
+        box-shadow: none;
+    }
+    
+    .dark-section:hover .article-text.dark-text p {
+        color: #222222 !important;
+        opacity: 0.95 !important;
+    }
+    
+    .nav-menu a:hover,
+    .category-tag:hover,
+    .article-link:hover,
+    .generate-btn:hover {
+        background: inherit;
+        color: inherit;
+        transform: none;
+        opacity: inherit;
+    }
+    
+    .data-table tr:hover {
+        background: inherit;
+    }
+    
+    .data-table tr:hover td {
+        color: inherit;
+        opacity: inherit;
+    }
+    
+    /* Включаем активные состояния */
+    .dark-section:active {
+        opacity: 0.95;
+        background: rgba(0, 0, 0, 0.7);
+    }
+    
+    .dark-section:active .article-text.dark-text p {
+        color: #ffffff !important;
+        opacity: 1 !important;
+    }
+    
+    .nav-menu a:active,
+    .category-tag:active,
+    .article-link:active,
+    .generate-btn:active {
+        background: rgba(40, 40, 40, 0.95);
+        color: #ffffff;
+        opacity: 1;
+    }
+    
+    .data-table tr:active {
+        background: rgba(40, 40, 40, 0.7);
+    }
+    
+    .data-table tr:active td {
+        color: #ffffff;
+        opacity: 1;
+    }
+}
+
+/* ========== ПРЕДОТВРАЩЕНИЕ ЗУМА НА ИНПУТАХ ========== */
+@media (max-width: 768px) {
+    input,
+    textarea,
+    select {
+        font-size: 16px !important;
+    }
+}
+
+/* ========== УЛУЧШЕНИЕ ПРОКРУТКИ ========== */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333333;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #666666;
+}
+
+/* ========== АДАПТИВНЫЕ ИКОНКИ ========== */
+@media (max-width: 768px) {
+    .fas,
+    .far,
+    .fab {
+        font-size: 1.1em;
+    }
+    
+    .title-icon {
+        font-size: 0.9em;
+    }
+}
+
+/* ========== КЛАССЫ ДЛЯ ОТЗЫВЧИВОЙ ТАБЛИЦЫ ========== */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 1rem 0;
+}
+
+.table-responsive table {
+    min-width: 600px;
+}
+
+@media (max-width: 768px) {
+    .table-responsive table {
+        min-width: 500px;
+    }
+}
+
+/* ========== ОПТИМИЗАЦИЯ ДЛЯ ВЫСОКОПРОИЗВОДИТЕЛЬНЫХ УСТРОЙСТВ ========== */
+@media (min-width: 768px) {
+    .wiki-nav {
+        will-change: opacity;
+    }
+    
+    .dark-section {
+        will-change: opacity, transform;
+    }
+}
+
+/* ========== ФИКС ДЛЯ IOS SAFARI ========== */
+@supports (-webkit-touch-callout: none) {
+    .wiki-nav {
+        -webkit-backdrop-filter: blur(10px);
+    }
+    
+    .sidebar-section,
+    .data-table table,
+    .status-panel,
+    .generator-section,
+    .generated-case {
+        -webkit-backdrop-filter: blur(5px);
+    }
+}

@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GOTHAM KNIGHT | Вики-архив</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Шрифты -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Rajdhani:wght@300;400;500&family=Share+Tech+Mono&family=Electrolize&display=swap" rel="stylesheet">
+    <!-- Иконки -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gothic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            opacity: 0.2;
+            background-image: url('https://i.pinimg.com/736x/3t/6u/hF30E.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            filter: brightness(0.3) contrast(1.2);
+        }
+        
+        /* Мобильное меню */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #8b0000;
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 10px;
+        }
+        
+        .mobile-search-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 10px;
+        }
+        
+        /* Мобильный поиск */
+        .mobile-search-container {
+            display: none;
+            padding: 15px;
+            background: rgba(10, 10, 10, 0.95);
+            border-bottom: 1px solid #333;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn,
+            .mobile-search-btn {
+                display: block;
+            }
+            
+            .nav-search {
+                display: none;
+            }
+            
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(10, 10, 10, 0.98);
+                flex-direction: column;
+                padding: 15px;
+                border-top: 1px solid #333;
+                z-index: 1000;
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .nav-menu a {
+                padding: 12px;
+                border-bottom: 1px solid #333;
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .nav-menu a:last-child {
+                border-bottom: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Фоновое изображение -->
+    <div class="gothic-bg"></div>
+    
+    <!-- Затемнение для фона -->
+    <div class="bg-overlay"></div>
+    
+    <!-- Навигация -->
+    <nav class="wiki-nav">
+        <div class="nav-container">
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="nav-logo">
+                <i class="fas fa-bat"></i>
+                <span>GOTHAM KNIGHT</span>
+            </div>
+            
+            <button class="mobile-search-btn" id="mobileSearchBtn">
+                <i class="fas fa-search"></i>
+            </button>
+            
+            <div class="nav-search">
+                <input type="text" placeholder="Поиск в архивах...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            
+            <div class="nav-menu" id="navMenu">
+                <a href="#"><i class="fas fa-home"></i> Главная</a>
+                <a href="#"><i class="fas fa-archive"></i> Архив</a>
+                <a href="#"><i class="fas fa-file-alt"></i> Статьи</a>
+                <a href="characters.html"><i class="fas fa-user-secret"></i> Персонажи</a>
+            </div>
+        </div>
+        
+        <!-- Мобильный поиск -->
+        <div class="mobile-search-container" id="mobileSearch">
+            <div style="display: flex; gap: 10px;">
+                <input type="text" placeholder="Поиск..." style="flex: 1; padding: 12px;">
+                <button style="padding: 0 20px; background: rgba(30,30,30,0.9); border: 1px solid #333; color: #fff;">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Основное содержимое -->
+    <div class="wiki-container">
+        <!-- Боковая панель -->
+        <aside class="wiki-sidebar" id="wikiSidebar">
+            <div class="sidebar-section">
+                <h3><i class="fas fa-bars"></i> НАВИГАЦИЯ</h3>
+                <ul class="sidebar-menu">
+                    <li class="active"><a href="#"><i class="fas fa-caret-right"></i> Главная страница</a></li>
+                    <li><a href="#"><i class="fas fa-caret-right"></i> Хронология событий</a></li>
+                    <li><a href="characters.html"><i class="fas fa-caret-right"></i> Персонажи</a></li>
+                    <li><a href="#"><i class="fas fa-caret-right"></i> Локации Готэма</a></li>
+                    <li><a href="#"><i class="fas fa-caret-right"></i> Технологии и гаджеты</a></li>
+                    <li><a href="#"><i class="fas fa-caret-right"></i> Враги и преступники</a></li>
+                    <li><a href="#"><i class="fas fa-caret-right"></i> Аналитика и отчёты</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <h3><i class="fas fa-fire"></i> АКТИВНЫЕ СТАТЬИ</h3>
+                <div class="active-articles">
+                    <a href="#" class="article-link">
+                        <span class="article-title">Бэтмобиль Mark III</span>
+                        <span class="article-meta">127 правок</span>
+                    </a>
+                    <a href="#" class="article-link">
+                        <span class="article-title">Схемы "Карнавала"</span>
+                        <span class="article-meta">43 правки</span>
+                    </a>
+                    <a href="#" class="article-link">
+                        <span class="article-title">Амёбный Город</span>
+                        <span class="article-meta">89 правок</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3><i class="fas fa-history"></i> НЕДАВНИЕ ИЗМЕНЕНИЯ</h3>
+                <div class="recent-changes">
+                    <div class="change-item">
+                        <span class="change-time">23:45</span>
+                        <span class="change-desc">Обновлён отчёт №247-90</span>
+                    </div>
+                    <div class="change-item">
+                        <span class="change-time">22:30</span>
+                        <span class="change-desc">Добавлены новые фотографии</span>
+                    </div>
+                    <div class="change-item">
+                        <span class="change-time">21:15</span>
+                        <span class="change-desc">Карта Амёбного Города</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Основной контент -->
+        <main class="wiki-content">
+            <!-- Заголовок страницы -->
+            <header class="content-header">
+                <h1 class="page-title">
+                    <span class="title-icon">⛤</span>
+                    GOTHAM KNIGHT
+                    <span class="title-icon">⛤</span>
+                </h1>
+                <div class="page-subtitle">
+                    <i class="fas fa-database"></i> Электронный архив Тёмного Рыцаря | <span class="status-active">АКТИВНЫЙ МОНИТОРИНГ</span>
+                </div>
+            </header>
+
+            <article class="wiki-article">
+                <!-- Глава 1 -->
+                <section id="chapter1" class="article-section dark-section">
+                    <h2 class="section-title">
+                        <span class="section-number">01</span>
+                        Глава I. Откровение
+                    </h2>
+                    
+                    <div class="section-header">
+                        <h3>ГОТЭМ</h3>
+                        <div class="section-meta">
+                            <span class="meta-item"><i class="far fa-clock"></i> Последнее обновление: 02:47</span>
+                            <span class="meta-item"><i class="far fa-edit"></i> ID: GK-247-01</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Тёмный текст -->
+                    <div class="article-text dark-text">
+                        <p class="centered-text">Город-гробница.</p>
+                        <p class="centered-text">Здесь нет рассвета. Есть только смена оттенков тьмы: от свинцового вечернего тумана до чёрной, как смоль, ночной мглы. И в этой мгле — Он, не призрак, не демон. Человек, в обличии летучей мыши.</p>
+                    </div>
+                </section>
+
+                <!-- Глава 2 -->
+                <section id="chapter2" class="article-section dark-section">
+                    <h2 class="section-title">
+                        <span class="section-number">02</span>
+                        Глава II. Догмат
+                    </h2>
+                    
+                    <!-- Тёмный текст -->
+                    <div class="article-text dark-text">
+                        <p class="centered-text">Бог забыл о нас, не дал нам защиту. И поэтому мы породили свое орудие. Он молитва, которую город шептал десятилетиями, и вот она — обрела форму. Форму острых ушей на силуэте багровой луны. Форму покоя, который заставляет выронить нож. Он следит. Он наш ангел в обличие дьявола. Он Бетмен.</p>
+                    </div>
+                </section>
+
+                <!-- Хроники -->
+                <section id="chronicles" class="article-section">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <span class="section-number">03</span>
+                            ХРОНИКИ НОЧИ
+                        </h2>
+                        <div class="section-subtitle">
+                            <i class="fas fa-newspaper"></i> Газета криминальной хроники Готэма
+                        </div>
+                    </div>
+                    
+                    <div class="article-text">
+                        <p class="centered-text"><strong>СВЕЖИЙ ВЫПУСК | НОЯБРЬ 2023</strong></p>
+                        <p class="centered-text">Оперативная сводка последних событий в нашем городе.</p>
+                    </div>
+                    
+                    <!-- Таблица -->
+                    <div class="data-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th><i class="fas fa-hashtag"></i> ДЕЛО №</th>
+                                    <th><i class="far fa-calendar"></i> ДАТА</th>
+                                    <th><i class="fas fa-map-marker-alt"></i> ЛОКАЦИЯ</th>
+                                    <th><i class="fas fa-tasks"></i> СТАТУС</th>
+                                    <th><i class="fas fa-align-left"></i> ОПИСАНИЕ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="case-number">GK-247-89</td>
+                                    <td class="case-date">25.11.2023</td>
+                                    <td class="case-location">Угрюмый пирс</td>
+                                    <td><span class="status-badge status-closed">ЗАКРЫТО</span></td>
+                                    <td class="case-desc centered-text">Ликвидирована сеть по торговле «Сомной». Подземная аптека. Шесть задержанных. Все — с переломами и в состоянии крайнего психологического потрясения.</td>
+                                </tr>
+                                <tr>
+                                    <td class="case-number">GK-247-90</td>
+                                    <td class="case-date">23.11.2023</td>
+                                    <td class="case-location">Galavan Enterprises</td>
+                                    <td><span class="status-badge status-closed">ЗАКРЫТО</span></td>
+                                    <td class="case-desc centered-text">Вскрыты схемы отмывания средств. Данные сброшены в прокуратуру. Шесть чиновников получили чёрные метки.</td>
+                                </tr>
+                                <tr>
+                                    <td class="case-number">GK-247-91</td>
+                                    <td class="case-date">АКТИВНО</td>
+                                    <td class="case-location">Амёбный город</td>
+                                    <td><span class="status-badge status-active">В РАБОТЕ</span></td>
+                                    <td class="case-desc centered-text">Лицо, известное как «БЕЙН». Исчезновения носят ритуальный характер. Расследование ведётся.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Статус города -->
+                    <div class="status-panel">
+                        <h4 class="centered-text"><i class="fas fa-chart-line"></i> СТАТУС ГОРОДА</h4>
+                        <div class="status-content">
+                            <p class="centered-text">Временный покой. Давление в котле растёт. Предчувствие бури.</p>
+                            <div class="threat-level">
+                                <div class="threat-label">УРОВЕНЬ УГРОЗЫ:</div>
+                                <div class="threat-meter">
+                                    <div class="meter-bar" style="width: 74%;"></div>
+                                </div>
+                                <div class="threat-value">74%</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Генератор новых дел -->
+                <div class="generator-section">
+                    <h3 class="centered-text"><i class="fas fa-random"></i> ГЕНЕРАТОР НОВЫХ ДЕЛ</h3>
+                    <div class="centered-text">
+                        <button id="generate-case" class="generate-btn">
+                            <i class="fas fa-plus-circle"></i> Сгенерировать новое дело
+                        </button>
+                    </div>
+                    <div id="generated-content" class="generated-content">
+                        <!-- Сюда будут добавляться сгенерированные дела -->
+                    </div>
+                </div>
+            </article>
+
+            <!-- Категории -->
+            <footer class="article-footer">
+                <div class="categories centered-text">
+                    <span class="category-label"><i class="fas fa-tags"></i> КАТЕГОРИИ:</span>
+                    <a href="#" class="category-tag">Бэтмен</a>
+                    <a href="#" class="category-tag">Готэм-сити</a>
+                    <a href="#" class="category-tag">Архив операций</a>
+                    <a href="#" class="category-tag">Хронология</a>
+                    <a href="#" class="category-tag">Засекреченно</a>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Футер сайта -->
+    <footer class="wiki-footer">
+        <div class="footer-container">
+            <div class="footer-section centered-text">
+                <h4><i class="fas fa-shield-alt"></i> GOTHAM KNIGHT ARCHIVE</h4>
+                <p>Засекреченная база данных операций Тёмного Рыцаря</p>
+                <p class="footer-note">Уровень доступа: DELTA</p>
+            </div>
+            <div class="footer-section centered-text">
+                <h4><i class="fas fa-link"></i> БЫСТРЫЕ ССЫЛКИ</h4>
+                <a href="#">Последние изменения</a>
+                <a href="#">Случайная статья</a>
+                <a href="#">Сообщить об ошибке</a>
+            </div>
+            <div class="footer-section centered-text">
+                <h4><i class="fas fa-lock"></i> СТАТУС СИСТЕМЫ</h4>
+                <div class="system-status centered-text">
+                    <span class="status-indicator active"></span>
+                    <span>СИСТЕМА АКТИВНА</span>
+                </div>
+                <div class="update-time centered-text">
+                    Последнее обновление: <span id="current-time">00:00:00</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom centered-text">
+            <p>© 2023 GOTHAM KNIGHT DATABASE • Все данные зашифрованы • Уровень безопасности: МАКСИМУМ</p>
+        </div>
+    </footer>
+
+    <!-- Контейнер для дождя -->
+    <div id="rain-container"></div>
+    
+    <script src="script.js"></script>
+    <script>
+        // Мобильное меню
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navMenu = document.getElementById('navMenu');
+            const mobileSearchBtn = document.getElementById('mobileSearchBtn');
+            const mobileSearch = document.getElementById('mobileSearch');
+            const wikiSidebar = document.getElementById('wikiSidebar');
+            
+            // Мобильное меню
+            if (mobileMenuBtn && navMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                    mobileSearch.classList.remove('active');
+                });
+            }
+            
+            // Мобильный поиск
+            if (mobileSearchBtn && mobileSearch) {
+                mobileSearchBtn.addEventListener('click', function() {
+                    mobileSearch.classList.toggle('active');
+                    mobileSearch.style.display = mobileSearch.classList.contains('active') ? 'block' : 'none';
+                    navMenu.classList.remove('active');
+                });
+            }
+            
+            // Закрытие меню при клике вне его
+            document.addEventListener('click', function(event) {
+                if (navMenu.classList.contains('active') && 
+                    !navMenu.contains(event.target) && 
+                    !mobileMenuBtn.contains(event.target)) {
+                    navMenu.classList.remove('active');
+                }
+                
+                if (mobileSearch.classList.contains('active') && 
+                    !mobileSearch.contains(event.target) && 
+                    !mobileSearchBtn.contains(event.target)) {
+                    mobileSearch.classList.remove('active');
+                    mobileSearch.style.display = 'none';
+                }
+            });
+            
+            // Адаптивная боковая панель
+            function checkSidebar() {
+                if (window.innerWidth <= 768) {
+                    wikiSidebar.style.display = 'none';
+                } else {
+                    wikiSidebar.style.display = 'block';
+                }
+            }
+            
+            checkSidebar();
+            window.addEventListener('resize', checkSidebar);
+            
+            // Кнопка показа боковой панели на мобильных
+            if (window.innerWidth <= 768) {
+                const sidebarToggle = document.createElement('button');
+                sidebarToggle.innerHTML = '<i class="fas fa-chevron-right"></i> Меню';
+                sidebarToggle.style.cssText = `
+                    position: fixed;
+                    top: 80px;
+                    left: 0;
+                    background: rgba(20,20,20,0.9);
+                    color: #fff;
+                    border: 1px solid #333;
+                    padding: 8px 15px;
+                    border-radius: 0 4px 4px 0;
+                    z-index: 1000;
+                    cursor: pointer;
+                    font-family: 'Orbitron', sans-serif;
+                    font-size: 0.9rem;
+                `;
+                
+                sidebarToggle.addEventListener('click', function() {
+                    wikiSidebar.style.display = wikiSidebar.style.display === 'block' ? 'none' : 'block';
+                    wikiSidebar.style.position = 'fixed';
+                    wikiSidebar.style.top = '0';
+                    wikiSidebar.style.left = '0';
+                    wikiSidebar.style.width = '250px';
+                    wikiSidebar.style.height = '100vh';
+                    wikiSidebar.style.overflowY = 'auto';
+                    wikiSidebar.style.zIndex = '999';
+                    wikiSidebar.style.background = 'rgba(10,10,10,0.98)';
+                    wikiSidebar.style.padding = '20px';
+                    wikiSidebar.style.boxShadow = '5px 0 15px rgba(0,0,0,0.5)';
+                });
+                
+                document.body.appendChild(sidebarToggle);
+            }
+        });
+    </script>
+</body>
+</html>
